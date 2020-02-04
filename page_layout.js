@@ -14,25 +14,31 @@ for (var i=0; i < MAX_SUBCATEGORIES; i++){
 	//leftDiv.style.border = "1px solid black";
 	leftDiv.setAttribute("id", "breakdownRow_" + i + "_leftBar");
 	leftDiv.style.width = "100px";
+	leftDiv.style.height = "150px";
 	div.append(leftDiv);
 	leftDiv.style.padding = "2px";
 	
 	var canvasHolder = document.createElement("div");
-	canvasHolder.class = "canvas-holder";
+	canvasHolder.className = "canvas-holder";
+	canvasHolder.setAttribute("id", "canvasHolder" + i);
+	//canvasHolder.style.border = "1px solid black";
 	div.append(canvasHolder);
 	
 	var canvas = document.createElement("canvas");
 	canvas.setAttribute("id", "subBarChart_" + i);
 	//canvas.style.border = "1px solid black";
-	canvas.height = "100";
+	canvas.height = "150";
 	canvas.width = "400";
 	canvasHolder.append(canvas);
 	 
     breakdownDiv.append(div);
+	console.log(div);
 }
 
 for (var i=0; i < MAX_SUBCATEGORIES; i++){
 	makeBarChart([0], "subBarChart_" + i, "subBarChart_" + i);
+	document.getElementById("breakdownRow_" + i + "_leftBar").style.height = 
+	  document.getElementById("subBarChart_" + i).clientHeight + "px";
 }
 
 //left bar interaction
@@ -62,6 +68,9 @@ document.getElementById("leftBar").onclick = function(){
 		document.getElementById("breakdownRow_" + i + "_leftBar").innerHTML = STATS[SELECTION].subcategories[i].name +
 		  "<br>n = " + STATS[SELECTION].subcategories[i].n;
 		document.getElementById("breakdownRow_" + i + "_leftBar").style.width = "100px";
+		//console.log(document.getElementById("subBarChart_" + i).height);
+		//console.log(document.getElementById("subBarChart_" + i).clientHeight);
+		//document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).height + "px";
 		document.getElementById("breakdownRow_" + i + "_leftBar").style.backgroundColor = PALLETTE[SELECTION];
 		
 	}
@@ -71,7 +80,19 @@ document.getElementById("leftBar").onclick = function(){
 	document.getElementById("treemap").style.display = "none";
 	document.getElementById("oneCategory").style.display = "none";
 	document.getElementById("breakdown").style.display = "flex";
+	// this code needs to be here because hidden elements have a height of zero
+		//console.log(document.getElementById("subBarChart_" + i).height);
+		console.log(document.getElementById("subBarChart_" + i).clientHeight);
+		document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).height + "px";
 };
+
+window.addEventListener('resize', function(){
+	
+	for (var i=0; i < STATS[SELECTION].subcategories.length; i++){
+		document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).clientHeight + "px";
+	}
+	
+}, true);
 
 //title text interaction
 document.getElementById("titleBar").onclick = function(){
@@ -86,3 +107,6 @@ document.getElementById("titleBar").onclick = function(){
 		console.log("clicked once");
 	}
 }
+
+document.getElementById("oneCategory").style.display = "none";
+document.getElementById("breakdown").style.display = "none";
