@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+
+<body>
+
+<div id="titleBar">Click to go back</div>
+<div id="treemap" class="column">
+  <canvas id="treemap-canvas"></canvas>
+</div>
+<div id="oneCategory" class="column">
+  <div id="leftBar">left bar</div>
+    <div class="canvas-holder">
+      <canvas id="mainBarChart" width="400"></canvas>
+	</div>
+</div>
+<div id="breakdown" class="column">
+  <!-- <div>test1</div>
+  <div>test2</div> -->
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="chartjs-chart-treemap-v022.js"></script>
+<script src="data.js"></script>
+<script src="treemap.js"></script>
+<script src="makeBarChart.js"></script>
+<script src="page_layout.js"></script>
+
+</html>
