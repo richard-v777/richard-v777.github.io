@@ -50,36 +50,77 @@ var STATS = [
    },
   {name: "human",
   n: 21,
-   dummy : ""},
+   dummy : "",
+   subcategories: [
+     {name: "dummy1",
+     n: 11},
+	 {name: "dummy2",
+	 n:10}
+   ]},
   {name: "machine",
   n: 14,
-   dummy : ""},
+   dummy : "",
+      subcategories: [
+     {name: "dummy1",
+     n: 7},
+	 {name: "dummy2",
+	 n:7}
+   ]},
   {name: "other",
   n: 11,
-   dummy : ""},
+   dummy : "",   
+   subcategories: [
+     {name: "dummy1",
+     n: 6},
+	 {name: "dummy2",
+	 n:5}
+   ]},
   {name: "thermal",
   n:4,
-   dummy : ""},
+   dummy : "",
+      subcategories: [
+     {name: "dummy1",
+     n: 2},
+	 {name: "dummy2",
+	 n:2}
+   ]},
   {name: "electrical",
   n:4,
-   dummy : ""},
+   dummy : "",
+      subcategories: [
+     {name: "dummy1",
+     n: 2},
+	 {name: "dummy2",
+	 n:2}
+   ]},
   {name: "vehicle",
   n:2,
-   dummy : ""}
+   dummy : "",
+      subcategories: [
+     {name: "dummy1",
+     n: 1},
+	 {name: "dummy2",
+	 n: 1}
+   ]}
 ];
 
 // assign some numbers to STATS object
-for (i=0; i < STATS[0].subcategories.length; i++){
-	x = STATS[0].subcategories[i];
-	n = x.n;
-	STATS[0].subcategories[i].data = randomPartition(n, 36);	
-}
-STATS[0].data = STATS[0].subcategories[0].data.slice(); // shallow copy
-for (i=1; i < STATS[0].subcategories.length; i++){
-	for (j=0; j < 36; j++){
-		STATS[0].data[j] += STATS[0].subcategories[i].data[j];
+
+for (var k=0; k < STATS.length; k++){
+	for (var i=0; i < STATS[k].subcategories.length; i++){
+		var x = STATS[k].subcategories[i];
+		console.log(x);
+		var n = x.n;
+		STATS[k].subcategories[i].data = randomPartition(n, 36);	
+	}
+	STATS[k].data = STATS[k].subcategories[0].data.slice(); // shallow copy
+	for (var z=1; z < STATS[k].subcategories.length; z++){
+		for (var j=0; j < 36; j++){
+			STATS[k].data[j] += STATS[k].subcategories[z].data[j];
+		}
 	}
 }
+
 for (var i=0; i < STATS.length; i++){
 	STATS[i].data = randomPartition(STATS[i].n, 36);
 }
