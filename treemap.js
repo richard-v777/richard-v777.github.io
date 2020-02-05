@@ -14,7 +14,7 @@ window.treemap = new Chart(ctx, {
 		fontColor: "white",
 		//textAlign: "left",
 		position: top,
-        backgroundColor: PALLETTE.slice(0,6),
+        backgroundColor: PALLETTE.slice(0,7),
         spacing: 1,
         borderWidth: 0,
         borderColor: "rgba(180,180,180, 0.15)"
@@ -41,7 +41,7 @@ window.treemap = new Chart(ctx, {
 	  }
 	  window.exampleBarChart.data.datasets[1].data = [{"x":5.5, "y":yearlyAvg[0]},{"x":17.5, "y":yearlyAvg[1]}, {"x":29.5, "y":yearlyAvg[2]}];
 	  window.exampleBarChart.update();
-	  document.getElementById("leftBar").style.backgroundColor = PALLETTE[idx];
+	  document.getElementById("leftBar").style.backgroundColor = PALLETTE[SELECTION];
 	  document.getElementById("leftBar").innerHTML = STATS[idx].name + "<br>n = " + STATS[idx].n;
 	  
 	  document.getElementById("treemap").style.display = "none";
