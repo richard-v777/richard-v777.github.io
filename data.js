@@ -114,15 +114,12 @@ for (var k=0; k < STATS.length; k++){
 		STATS[k].subcategories[i].data = randomPartition(n, 36);	
 	}
 	STATS[k].data = STATS[k].subcategories[0].data.slice(); // shallow copy
-	for (var z=1; z < STATS[k].subcategories.length; z++){
-		for (var j=0; j < 36; j++){
+	for (var j=0; j < 36; j++){
+	    for (var z=1; z < STATS[k].subcategories.length; z++){
 			STATS[k].data[j] += STATS[k].subcategories[z].data[j];
+			//console.log(STATS[k].data);
 		}
 	}
-}
-
-for (var i=0; i < STATS.length; i++){
-	STATS[i].data = randomPartition(STATS[i].n, 36);
 }
 
 //calculate maximum number of subcategories
