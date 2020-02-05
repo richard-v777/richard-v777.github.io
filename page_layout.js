@@ -70,7 +70,7 @@ document.getElementById("leftBar").onclick = function(){
 		document.getElementById("breakdownRow_" + i + "_leftBar").style.width = "100px";
 		//console.log(document.getElementById("subBarChart_" + i).height);
 		//console.log(document.getElementById("subBarChart_" + i).clientHeight);
-		//document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).height + "px";
+		//document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).clientHeight + "px";
 		document.getElementById("breakdownRow_" + i + "_leftBar").style.backgroundColor = PALLETTE[SELECTION];
 		
 	}
@@ -82,8 +82,13 @@ document.getElementById("leftBar").onclick = function(){
 	document.getElementById("breakdown").style.display = "flex";
 	// this code needs to be here because hidden elements have a height of zero
 		//console.log(document.getElementById("subBarChart_" + i).height);
-		console.log(document.getElementById("subBarChart_" + i).clientHeight);
-		document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).height + "px";
+		//console.log(document.getElementById("subBarChart_" + i).clientHeight);
+		//document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).clientHeight + "px";
+
+    for (var i=0; i < STATS[SELECTION].subcategories.length; i++){
+		document.getElementById("breakdownRow_" + i + "_leftBar").style.height = document.getElementById("subBarChart_" + i).clientHeight + "px";
+	}
+
 };
 
 window.addEventListener('resize', function(){
