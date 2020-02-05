@@ -46,8 +46,8 @@ window[chartName] = new Chart(document.getElementById(canvasName).getContext("2d
 	],
   },
   options: {
-    maintainAspectRatio: false,
-    responsive: false,
+    maintainAspectRatio: true,
+    responsive: true,
 	legend: {
 	  display: false
 	  },
@@ -77,7 +77,8 @@ window[chartName] = new Chart(document.getElementById(canvasName).getContext("2d
           min: 0
           },
 		  gridLines: {
-                color: "rgba(0, 0, 0, 0)",
+                color: "rgba(0, 0, 0, 0.05)",
+				z : -99
             },
 		  ticks: {
 			  stepSize: 1
