@@ -47,3 +47,7 @@ div {
     right: 8px;
     bottom: 8px;
 }
+
+canvas {
+	padding: 10px 10px 10px 10px;
+}
